@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Gothic+A1:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: black;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+.font-horror {
+  font-family: 'Nosifer', cursive;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5),
+               0 0 20px rgba(255, 0, 0, 0.3),
+               0 0 30px rgba(255, 0, 0, 0.2);
+}
+
+.font-gothic {
+  font-family: 'Gothic A1', sans-serif;
+}
+
+/* Custom cursor */
+* {
+  cursor: none !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent text selection */
+.select-none {
+  user-select: none;
+}
+
+/* Ensure content is visible by default */
+#root {
+  isolation: isolate;
+}
