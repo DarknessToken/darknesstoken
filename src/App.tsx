@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Copy } from 'lucide-react';
 import Header from './components/Header';
 import HowToBuy from './components/HowToBuy';
@@ -6,28 +6,12 @@ import Tokenomics from './components/Tokenomics';
 import Socials from './components/Socials';
 import MouseLight from './components/MouseLight';
 import FloatingParticles from './components/FloatingParticles';
+import { useMousePosition } from './hooks/useMousePosition';
+import { copyToClipboard } from './utils/clipboard';
 
 function App() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mousePosition = useMousePosition();
   const contractAddress = "soon";
-
-  const handleMouseMove = (e: MouseEvent) => {
-    setMousePosition({ x: e.clientX, y: e.clientY });
-  };
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const copyToClipboard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      alert('Contract address copied!');
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
-  };
 
   return (
     <div className="relative min-h-screen bg-black text-gray-100">
@@ -39,19 +23,19 @@ function App() {
         
         <main className="container mx-auto px-4 py-12">
           <section className="min-h-screen flex flex-col items-center justify-center text-center">
-            <h1 className="text-6xl md:text-[8rem] font-bold mb-6 font-horror tracking-wider text-red-600 animate-pulse select-none">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-[8rem] font-bold mb-6 font-horror tracking-wider text-red-600 animate-pulse select-none px-2">
               Darkness
             </h1>
-            <p className="text-1.6xl md:text-4xl mb-12 font-horror select-none">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl mb-12 font-horror select-none px-2">
               Can you see anything?
             </p>
-            <div className="bg-gray-900/50 p-6 rounded-lg backdrop-blur-sm">
-              <p className="text-2.5x1 mb-4 font-gothic">Contract Address</p>
-              <div className="flex items-center justify-center gap-2">
-                <p className="font-mono text-sm">{contractAddress}</p>
+            <div className="bg-gray-900/50 p-4 sm:p-6 rounded-lg backdrop-blur-sm w-full max-w-md mx-auto">
+              <p className="text-xl sm:text-1xl md:text-1xl mb-3 font-gothic">Contract Address</p>
+              <div className="flex items-center justify-center gap-2 px-2">
+                <p className="font-mono text-xs sm:text-sm break-all">{contractAddress}</p>
                 <button
                   onClick={() => copyToClipboard(contractAddress)}
-                  className="p-2 hover:bg-gray-800 rounded-full transition-colors"
+                  className="p-2 hover:bg-gray-800 rounded-full transition-colors flex-shrink-0"
                 >
                   <Copy size={20} />
                 </button>
