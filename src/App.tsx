@@ -11,7 +11,7 @@ import { copyToClipboard } from './utils/clipboard';
 
 function App() {
   const mousePosition = useMousePosition();
-  const contractAddress = "soon";
+  const contractAddress = "HiznHcfJ3htwHoGYpNfPMXLzP6MVSpu296PbZYggmoon";
 
   return (
     <div className="relative min-h-screen bg-black text-gray-100">
